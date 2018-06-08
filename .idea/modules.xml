@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dagger2demo2.iml" filepath="$PROJECT_DIR$/dagger2demo2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dagger2demo22/dagger2demo22.iml" filepath="$PROJECT_DIR$/dagger2demo22/dagger2demo22.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dagger2demo33/dagger2demo33.iml" filepath="$PROJECT_DIR$/dagger2demo33/dagger2demo33.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dagger2demo44/dagger2demo44.iml" filepath="$PROJECT_DIR$/dagger2demo44/dagger2demo44.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dagger2demo66/dagger2demo66.iml" filepath="$PROJECT_DIR$/dagger2demo66/dagger2demo66.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dagger3demo/dagger3demo.iml" filepath="$PROJECT_DIR$/dagger3demo/dagger3demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dagger4demo55/dagger4demo55.iml" filepath="$PROJECT_DIR$/dagger4demo55/dagger4demo55.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,70 @@
+@Inject
+这个注解是用来说明 该注解下方的属性或方法 需要依赖注入
+
+@Provider
+在@Module注解的类中，使用@Provider注解，说明提供依赖注入的具体对象
+
+@Component
+简单说就是，可以通过Component访问到Module中提供的依赖注入对象。
+假设，如果有两个Module，AModule、BModule，如果Component只注册了AModule，
+而没有注册BModule，那么BModule中提供的对象，无法进行依赖注入！
+
+@SubComponent
+该注解从名字上就能知道，它是子Component，
+会完全继承父Component的所有依赖注入对象！
+
+
+我们假设案例中的Activity代表家庭住址，Student代表某个商品，现在我们需要在家（Activity）中使用商品（Student），
+我们网购下单，商家（代表着案例中自动生成的Student_Factory工厂类）将商品出厂，这时我们能够在家直接获得并使用商品吗？
+
+当然不可能，虽然商品（Student）已经从工厂（Factory）生产出来，但是并没有和家（Activity）建立连接，
+我们还需要一个新的对象将商品送货上门，这种英雄级的人物叫做——快递员（Component,注入器）。
+
+没错，我们需要这样的一种注入器，
+将已经生产的Student对象传递到需要使用该Student的容器Activity中，于是我们需要在Activity中增加这样几行代码：
+
+
+@Inject ： 注入，被注解的构造方法会自动编译生成一个Factory工厂类提供该类对象。
+@Component: 注入器，类似快递员，作用是将产生的对象注入到需要对象的容器中，供容器使用。
+@Module: 模块，类似快递箱子，在Component接口中通过@Component(modules =
+xxxx.class),将容器需要的商品封装起来，统一交给快递员（Component），让快递员统一送到目标容器中。
+
+
+1.通过@Inject注解了一个类的构造方法后，可以让编译器帮助我们产生一个对应的Factory类，
+通过这个工厂类我们可以通过简单的get()方法获取到Student对象！
+
+
+1懒加载Lazy
+
+一个对象只有用的时候再初始化，这样可以避免不必要的内存开销。
+Dagger2中提供了懒加载，我们可以不用在注入的时候就初始化所有的对象
+cpu对象需要立即初始化，usb对象可以延迟加载
+  //注入，这时usb对象并没有初始化，只初始化Lazy<Usb>对象mUsb,但Usb对象没有初始化，
+  //只有当我们调用Lazy<Usb> 对象mUsb 的get()时才会去创建一个Usb对象
+
+2 Provider
+//在注入时 Provider<NetWork>对象mNetWork会被初始化，调用mNetWork.get()会创建NetWork对象，每次创建的都不一样
+
+
+//3 Qualifier是一个元注解，它的target是annotation_type 表示它可以修饰一个注解类型
+
+// 因为在WMouseModule中提供了两个方法返回不同的Mouse对象，而Computer中注入一个Mouse对象，
+// 这时就需要我们在Computer类中添加WMouse依赖时指定使用哪个方法返回一个WMouse对象。
+//@Component(modules = WMouseModule.class)
+//public interface ComputerComponent {
+//    void inject(Computer computer);
+//}
+
+@Sigleton
+被注解的对象，在App中是单例存在的！
+@Scope
+用来标注依赖注入对象的适用范围。
+
+//4Singleton  @Scole效果相同
+
+//我们使用@Singleton分别注解XMainBoard和ComputerComponent类，表明将XMainBoard和ComputerComponent绑定
+//一个ComputerComponent对象只会存在一个XMainBoard实例，即使我们在Computer类中声明了两个MainBoard对象，
+// 注入之后，这两个对象实际上指向的是同一个MainBoard的对象。
+
+
+

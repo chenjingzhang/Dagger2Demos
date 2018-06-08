@@ -1,0 +1,1 @@
+include ':app', ':dagger2demo22', ':dagger3demo', ':dagger2demo33', ':dagger2demo44', ':dagger4demo55', ':dagger2demo66'
